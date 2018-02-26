@@ -1,0 +1,11 @@
+@(user: models.users.User, p: models.Product)
+
+@main(p.getName , user) {
+
+    <h1>@p.getName</h1>
+
+
+
+    <img src="/assets/images/productImages/@(p.getId + ".jpg")"/>
+
+}
