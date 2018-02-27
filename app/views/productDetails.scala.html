@@ -1,11 +1,38 @@
-@(user: models.users.User, p: models.Product)
+@(p: models.Product,user: models.users.User,env: play.api.Environment)
 
-@main(p.getName , user) {
+@main("Full Image", user) {
 
-    <h1>@p.getName</h1>
+  <div class="col-sm-10">
+    <table class="table table-bordered table-hover table-condensed">
+      @if(flash.containsKey("success")) {
+        <div class="alert alert-success">
+          @flash.get("success")
+        </div>
+      }
+      <thead>
+        <tr>
+          <th>Image</th> 
+          <th>ID</th> 
+        </tr>
+      </thead>
 
+      <tbody>
 
+          <tr>
+              @if(env.resource("public/images/productImages/" + p.getId + ".jpg").isDefined) {
+                <td><img src="/assets/images/productImages/@(p.getId + ".jpg")"/></td>
+            } else {
+                <td><img src="/assets/images/productImages/noImage.jpg"/></td>
+            }
+            <td class="numeric">@p.getId</td>
+            
+          </tr>
+        
+      </tbody>
 
-    <img src="/assets/images/productImages/@(p.getId + ".jpg")"/>
+    </table>
 
+    
+  </div>
+</div>
 }

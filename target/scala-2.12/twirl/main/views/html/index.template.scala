@@ -25,12 +25,12 @@ import play.core.j.PlayFormsMagicForJava._
 object index extends _root_.play.twirl.api.BaseScalaTemplate[play.twirl.api.HtmlFormat.Appendable,_root_.play.twirl.api.Format[play.twirl.api.HtmlFormat.Appendable]](play.twirl.api.HtmlFormat) with _root_.play.twirl.api.Template4[List[models.Product],List[models.Category],models.users.User,play.api.Environment,play.twirl.api.HtmlFormat.Appendable] {
 
   /**/
-  def apply/*1.2*/(products: List[models.Product], categories: List[models.Category], user: models.users.User, env: play.api.Environment):play.twirl.api.HtmlFormat.Appendable = {
+  def apply/*1.2*/(products: List[models.Product], categories: List[models.Category], user: models.users.User,env: play.api.Environment):play.twirl.api.HtmlFormat.Appendable = {
     _display_ {
       {
 
 
-Seq[Any](format.raw/*1.121*/("""
+Seq[Any](format.raw/*1.120*/("""
 
 """),_display_(/*3.2*/main("Products",user)/*3.23*/ {_display_(Seq[Any](format.raw/*3.25*/("""
 
@@ -57,9 +57,8 @@ Seq[Any](format.raw/*1.121*/("""
       """)))}),format.raw/*25.8*/("""
       """),format.raw/*26.7*/("""<thead>
         <tr>
-          <th>Image</th>
+          <th>ID</th>
           <th>Name</th>
-          <th>Category</th>
           <th>Description</th>
           <th>Stock</th>
           <th>Price</th>
@@ -68,48 +67,43 @@ Seq[Any](format.raw/*1.121*/("""
       </thead>
 
       <tbody>
-        """),_display_(/*39.10*/for(p<-products) yield /*39.26*/ {_display_(Seq[Any](format.raw/*39.28*/("""
-          
-          """),format.raw/*41.11*/("""<tr>
-              
-              <td>"""),_display_(/*43.20*/p/*43.21*/.getId),format.raw/*43.27*/("""</td>
-            """),_display_(/*44.14*/if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined)/*44.102*/ {_display_(Seq[Any](format.raw/*44.104*/("""
-              """),format.raw/*45.15*/("""<td><img src="/assets/images/productImages/thumbnails/"""),_display_(/*45.70*/(p.getId + ".jpg")),format.raw/*45.88*/(""""/></td>
-            """)))}/*46.15*/else/*46.20*/{_display_(Seq[Any](format.raw/*46.21*/("""
-              """),format.raw/*47.15*/("""<td><img src="/assets/images/productImages/thumbnails/noImage.png"/></td>
-            """)))}),format.raw/*48.14*/("""
-            
-            """),format.raw/*50.13*/("""<td><a href=""""),_display_(/*50.27*/routes/*50.33*/.HomeController.productDetails(p.getId)),format.raw/*50.72*/("""">"""),_display_(/*50.75*/p/*50.76*/.getName),format.raw/*50.84*/("""</a></td>
-          
-            <td>"""),_display_(/*52.18*/p/*52.19*/.getCategory.getName),format.raw/*52.39*/("""</td>        
-            <td>"""),_display_(/*53.18*/p/*53.19*/.getDescription),format.raw/*53.34*/("""</td>
-            <td  class="numeric">"""),_display_(/*54.35*/p/*54.36*/.getStock),format.raw/*54.45*/("""</td>
-            <td  class="numeric">€ """),_display_(/*55.37*/("%.2f".format(p.getPrice))),format.raw/*55.64*/("""</td>
+        """),_display_(/*38.10*/for(p<-products) yield /*38.26*/ {_display_(Seq[Any](format.raw/*38.28*/("""
+          """),format.raw/*39.11*/("""<tr>
+              """),_display_(/*40.16*/if(env.resource("public/images/productImages/thumbnails/" + p.getId + ".jpg").isDefined)/*40.104*/ {_display_(Seq[Any](format.raw/*40.106*/("""
+                """),format.raw/*41.17*/("""<td><img src="/assets/images/productImages/thumbnails/"""),_display_(/*41.72*/(p.getId + ".jpg")),format.raw/*41.90*/(""""/></td>
+            """)))}/*42.15*/else/*42.20*/{_display_(Seq[Any](format.raw/*42.21*/("""
+                """),format.raw/*43.17*/("""<td><img src="/assets/images/productImages/thumbnails/noImage.jpg"/></td>
+            """)))}),format.raw/*44.14*/("""
+            """),format.raw/*45.13*/("""<td class="numeric">"""),_display_(/*45.34*/p/*45.35*/.getId),format.raw/*45.41*/("""</td>
+            <td><a href=""""),_display_(/*46.27*/routes/*46.33*/.HomeController.productDetails(p.getId)),format.raw/*46.72*/("""">
+                """),_display_(/*47.18*/p/*47.19*/.getName),format.raw/*47.27*/("""</td>
+               </a>        
+            <td>"""),_display_(/*49.18*/p/*49.19*/.getDescription),format.raw/*49.34*/("""</td>
+            <td  class="numeric">"""),_display_(/*50.35*/p/*50.36*/.getStock),format.raw/*50.45*/("""</td>
+            <td  class="numeric">€ """),_display_(/*51.37*/("%.2f".format(p.getPrice))),format.raw/*51.64*/("""</td>
             <td>
-              <a href=""""),_display_(/*57.25*/routes/*57.31*/.HomeController.updateProduct(p.getId)),format.raw/*57.69*/("""" class="button xs btn-danger">
+              <a href=""""),_display_(/*53.25*/routes/*53.31*/.HomeController.updateProduct(p.getId)),format.raw/*53.69*/("""" class="button xs btn-danger">
                 <span class="glyphicon glyphicon-pencil"></span>
               </a>
             </td>        <td>
-              <a href=""""),_display_(/*61.25*/routes/*61.31*/.HomeController.deleteProduct(p.getId)),format.raw/*61.69*/("""" class="button xs btn-danger" onclick="return confirmDel();">
+              <a href=""""),_display_(/*57.25*/routes/*57.31*/.HomeController.deleteProduct(p.getId)),format.raw/*57.69*/("""" class="button xs btn-danger" onclick="return confirmDel();">
                 <span class="glyphicon glyphicon-trash"></span>
               </a>
             </td>
-
           </tr>
-        
-        """)))}),format.raw/*68.10*/("""
-      """),format.raw/*69.7*/("""</tbody>
+        """)))}),format.raw/*62.10*/("""
+      """),format.raw/*63.7*/("""</tbody>
 
     </table>
 
     <p>
-      <a href=""""),_display_(/*74.17*/routes/*74.23*/.HomeController.addProduct()),format.raw/*74.51*/("""">
+      <a href=""""),_display_(/*68.17*/routes/*68.23*/.HomeController.addProduct()),format.raw/*68.51*/("""">
         <button class="btn btn-primary">Add a product</button>
       </a>
     </p>
   </div>
 </div>
-""")))}),format.raw/*80.2*/("""
+""")))}),format.raw/*74.2*/("""
 """))
       }
     }
@@ -126,11 +120,11 @@ Seq[Any](format.raw/*1.121*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Mon Feb 26 18:46:26 GMT 2018
+                  DATE: Tue Feb 27 18:31:18 GMT 2018
                   SOURCE: /home/wdd/webapps/lab1/app/views/index.scala.html
-                  HASH: 80aef244ea20d23562e6345180cfd2dc65f04e1d
-                  MATRIX: 1023->1|1238->120|1266->123|1295->144|1334->146|1362->148|1544->303|1559->309|1604->333|1682->385|1718->405|1758->407|1794->416|1831->426|1846->432|1897->462|1951->489|1961->490|1990->498|2029->509|2077->530|2087->531|2127->550|2185->578|2217->583|2361->701|2402->733|2442->735|2478->744|2550->789|2564->794|2600->809|2636->818|2680->832|2714->839|3011->1109|3043->1125|3083->1127|3133->1149|3199->1188|3209->1189|3236->1195|3282->1214|3380->1302|3421->1304|3464->1319|3546->1374|3585->1392|3626->1415|3639->1420|3678->1421|3721->1436|3839->1523|3893->1549|3934->1563|3949->1569|4009->1608|4039->1611|4049->1612|4078->1620|4143->1658|4153->1659|4194->1679|4252->1710|4262->1711|4298->1726|4365->1766|4375->1767|4405->1776|4474->1818|4522->1845|4596->1892|4611->1898|4670->1936|4867->2106|4882->2112|4941->2150|5171->2349|5205->2356|5280->2404|5295->2410|5344->2438|5477->2541
-                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|43->11|43->11|43->11|44->12|44->12|44->12|45->13|45->13|45->13|45->13|45->13|45->13|45->13|46->14|46->14|46->14|46->14|48->16|49->17|53->21|53->21|53->21|54->22|55->23|55->23|55->23|56->24|57->25|58->26|71->39|71->39|71->39|73->41|75->43|75->43|75->43|76->44|76->44|76->44|77->45|77->45|77->45|78->46|78->46|78->46|79->47|80->48|82->50|82->50|82->50|82->50|82->50|82->50|82->50|84->52|84->52|84->52|85->53|85->53|85->53|86->54|86->54|86->54|87->55|87->55|89->57|89->57|89->57|93->61|93->61|93->61|100->68|101->69|106->74|106->74|106->74|112->80
+                  HASH: ecf4847cc6c9ca38ddd2334c1bab706f1abe79bc
+                  MATRIX: 1023->1|1237->119|1265->122|1294->143|1333->145|1361->147|1543->302|1558->308|1603->332|1681->384|1717->404|1757->406|1793->415|1830->425|1845->431|1896->461|1950->488|1960->489|1989->497|2028->508|2076->529|2086->530|2126->549|2184->577|2216->582|2360->700|2401->732|2441->734|2477->743|2549->788|2563->793|2599->808|2635->817|2679->831|2713->838|2979->1077|3011->1093|3051->1095|3090->1106|3137->1126|3235->1214|3276->1216|3321->1233|3403->1288|3442->1306|3483->1329|3496->1334|3535->1335|3580->1352|3698->1439|3739->1452|3787->1473|3797->1474|3824->1480|3883->1512|3898->1518|3958->1557|4005->1577|4015->1578|4044->1586|4122->1637|4132->1638|4168->1653|4235->1693|4245->1694|4275->1703|4344->1745|4392->1772|4466->1819|4481->1825|4540->1863|4737->2033|4752->2039|4811->2077|5031->2266|5065->2273|5140->2321|5155->2327|5204->2355|5337->2458
+                  LINES: 28->1|33->1|35->3|35->3|35->3|37->5|43->11|43->11|43->11|44->12|44->12|44->12|45->13|45->13|45->13|45->13|45->13|45->13|45->13|46->14|46->14|46->14|46->14|48->16|49->17|53->21|53->21|53->21|54->22|55->23|55->23|55->23|56->24|57->25|58->26|70->38|70->38|70->38|71->39|72->40|72->40|72->40|73->41|73->41|73->41|74->42|74->42|74->42|75->43|76->44|77->45|77->45|77->45|77->45|78->46|78->46|78->46|79->47|79->47|79->47|81->49|81->49|81->49|82->50|82->50|82->50|83->51|83->51|85->53|85->53|85->53|89->57|89->57|89->57|94->62|95->63|100->68|100->68|100->68|106->74
                   -- GENERATED --
               */
           

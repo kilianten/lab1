@@ -1,7 +1,7 @@
 
 // @GENERATOR:play-routes-compiler
 // @SOURCE:/home/wdd/webapps/lab1/conf/routes
-// @DATE:Mon Feb 26 18:27:23 GMT 2018
+// @DATE:Tue Feb 27 18:31:17 GMT 2018
 
 package controllers;
 

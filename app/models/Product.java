@@ -14,9 +14,9 @@ public class Product extends Model {
         @Id
         private Long id;
         @Constraints.Required
+        @ManyToMany(cascade = CascadeType.ALL, mappedBy = "products")
+        public List<Category> categories;
         private String name;
-        @ManyToOne
-        private Category category;
         @Constraints.Required
         private String description; 
         @Constraints.Required
@@ -57,13 +57,7 @@ public class Product extends Model {
         public void setName(String name) {
             this.name = name;
         }
-        public Category getCategory() {
-            return category;
-        }
-        
-        public void setCategory(Category c) {
-            this.category = c;
-        }
+
         public String getDescription() { 
             return description; 
         } 
@@ -81,6 +75,12 @@ public class Product extends Model {
         } 
         public void setPrice(double price) { 
             this.price = price; 
-        } 
+        }
+
+        public List<Long> catSelect = new ArrayList<Long>();
+
+        public List<Long> getCatSelect(){
+            return catSelect;
+        }
     }
     

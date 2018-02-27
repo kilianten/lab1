@@ -35,35 +35,41 @@ Seq[Any](format.raw/*1.62*/("""
 """),format.raw/*3.1*/("""
 """),_display_(/*4.2*/main("Add Product",user)/*4.26*/ {_display_(Seq[Any](format.raw/*4.28*/("""
     """),format.raw/*5.5*/("""<p class="lead">Add a new product</p>
-    """),_display_(/*6.6*/form(action=routes.HomeController.addProductSubmit(), 'class -> "form-horizontal", 'role -> "form", 'enctype -> "multipart/form-data")/*6.140*/ {_display_(Seq[Any](format.raw/*6.142*/("""
-        """),format.raw/*7.37*/("""
-        """),_display_(/*8.10*/CSRF/*8.14*/.formField),format.raw/*8.24*/("""
+    """),_display_(/*6.6*/form(action=routes.HomeController.addProductSubmit(), 
+    'class -> "form-horizontal", 
+    'role -> "form",
+    'enctype -> "multipart/form-data")/*9.39*/ {_display_(Seq[Any](format.raw/*9.41*/("""
+        """),format.raw/*10.37*/("""
+        """),_display_(/*11.10*/CSRF/*11.14*/.formField),format.raw/*11.24*/("""
 
-        """),_display_(/*10.10*/inputText(productForm("name"), '_label -> "Name", 'class -> "form-control")),format.raw/*10.85*/("""
-        """),_display_(/*11.10*/select(
+        """),_display_(/*13.10*/inputText(productForm("name"), '_label -> "Name", 'class -> "form-control")),format.raw/*13.85*/("""
+        """),format.raw/*14.9*/("""<!-- """),_display_(/*14.15*/select(
             productForm("category.id"),
             options(Category.options),
             '_label -> "Category", '_default -> "-- Choose a category --",
             '_showConstraints -> false, 'class -> "form-control"
-        )),format.raw/*16.10*/("""
-        """),_display_(/*17.10*/inputText(productForm("description"), '_label -> "Description", 'class -> "form-control")),format.raw/*17.99*/("""
-        """),_display_(/*18.10*/inputText(productForm("stock"), '_label -> "Stock", 'class -> "form-control")),format.raw/*18.87*/("""
-        """),_display_(/*19.10*/inputText(productForm("price"), '_label -> "Price", 'class -> "form-control")),format.raw/*19.87*/("""
+        )),format.raw/*19.10*/(""" """),format.raw/*19.11*/("""-->
+        """),_display_(/*20.10*/for((value, name) <- Category.options) yield /*20.48*/ {_display_(Seq[Any](format.raw/*20.50*/("""
+            """),format.raw/*21.13*/("""<input type="checkbox" name="catSelect[]" value=""""),_display_(/*21.63*/value),format.raw/*21.68*/(""""
 
-        """),_display_(/*21.10*/inputText(productForm("id"), '_label -> "", 'hidden -> "hidden")),format.raw/*21.74*/("""
+            />"""),_display_(/*23.16*/name),format.raw/*23.20*/("""<br>
+        """)))}),format.raw/*24.10*/("""
+        """),_display_(/*25.10*/inputText(productForm("description"), '_label -> "Description", 'class -> "form-control")),format.raw/*25.99*/("""
+        """),_display_(/*26.10*/inputText(productForm("stock"), '_label -> "Stock", 'class -> "form-control")),format.raw/*26.87*/("""
+        """),_display_(/*27.10*/inputText(productForm("price"), '_label -> "Price", 'class -> "form-control")),format.raw/*27.87*/("""
 
-       """),format.raw/*23.8*/("""<label>Image Upload</label>
-       <input class="btn-sm btn-default" type="file" name="upload">
-       <br><br>
-
-
+        """),_display_(/*29.10*/inputText(productForm("id"), '_label -> "", 'hidden -> "hidden")),format.raw/*29.74*/("""
+        
+        """),format.raw/*31.9*/("""<label>Image Upload</label>
+        <input class="btn-sm btn-default" type="file" name="upload">
+        <br><br>
         <div class="actions">
-            <input type="submit" value="Add/Update Product" class="btn btn-primary">
-            <a href=""""),_display_(/*30.23*/routes/*30.29*/.HomeController.index(0)),format.raw/*30.53*/("""">
+            <input type="submit" value="Add Product" class="btn btn-primary">
+            <a href=""""),_display_(/*36.23*/routes/*36.29*/.HomeController.index(0)),format.raw/*36.53*/("""">
                 <button type="button" class="btn btn-warning">Cancel</button>
             </a>
         </div>
-    """)))}),format.raw/*34.6*/("""
+    """)))}),format.raw/*40.6*/("""
 """)))}))
       }
     }
@@ -80,11 +86,11 @@ Seq[Any](format.raw/*1.62*/("""
 
               /*
                   -- GENERATED --
-                  DATE: Fri Feb 23 18:18:32 GMT 2018
+                  DATE: Tue Feb 27 18:31:18 GMT 2018
                   SOURCE: /home/wdd/webapps/lab1/app/views/addProduct.scala.html
-                  HASH: f498d51620b09ee69e036d96afd2c2e8e4d6ef56
-                  MATRIX: 985->1|1118->63|1163->61|1190->79|1217->81|1249->105|1288->107|1319->112|1387->155|1530->289|1570->291|1606->328|1642->338|1654->342|1684->352|1722->363|1818->438|1855->448|2112->684|2149->694|2259->783|2296->793|2394->870|2431->880|2529->957|2567->968|2652->1032|2688->1041|2966->1292|2981->1298|3026->1322|3174->1440
-                  LINES: 28->1|31->2|34->1|35->3|36->4|36->4|36->4|37->5|38->6|38->6|38->6|39->7|40->8|40->8|40->8|42->10|42->10|43->11|48->16|49->17|49->17|50->18|50->18|51->19|51->19|53->21|53->21|55->23|62->30|62->30|62->30|66->34
+                  HASH: 438aa21d4a3f4351e3ca6dfe3aaa47e910131a0c
+                  MATRIX: 985->1|1118->63|1163->61|1190->79|1217->81|1249->105|1288->107|1319->112|1387->155|1543->303|1582->305|1619->342|1656->352|1669->356|1700->366|1738->377|1834->452|1870->461|1903->467|2160->703|2189->704|2229->717|2283->755|2323->757|2364->770|2441->820|2467->825|2512->843|2537->847|2582->861|2619->871|2729->960|2766->970|2864->1047|2901->1057|2999->1134|3037->1145|3122->1209|3167->1227|3438->1471|3453->1477|3498->1501|3646->1619
+                  LINES: 28->1|31->2|34->1|35->3|36->4|36->4|36->4|37->5|38->6|41->9|41->9|42->10|43->11|43->11|43->11|45->13|45->13|46->14|46->14|51->19|51->19|52->20|52->20|52->20|53->21|53->21|53->21|55->23|55->23|56->24|57->25|57->25|58->26|58->26|59->27|59->27|61->29|61->29|63->31|68->36|68->36|68->36|72->40
                   -- GENERATED --
               */
           
